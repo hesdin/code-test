@@ -43,4 +43,9 @@ class ApiResponse implements Responsable
         $data = is_null($errors) ? null : ['errors' => $errors];
         return new static($data, $msg, $status);
     }
+
+    public static function fromValidationException(\Illuminate\Validation\ValidationException $e): static
+    {
+        return self::error(__('validation.failed'), $e->status, $e->errors());
+    }
 }

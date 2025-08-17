@@ -1,0 +1,72 @@
+{
+  "info": {
+    "name": "Posts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {"key": "baseUrl", "value": "http://localhost:8000/api"}
+  ],
+  "item": [
+    {
+      "name": "List Posts",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/v1/posts"
+      }
+    },
+    {
+      "name": "Create Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Accept", "value": "application/json"}
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {"key": "user_id", "value": "1"},
+            {"key": "title", "value": "Sample"},
+            {"key": "slug", "value": "sample"},
+            {"key": "description", "value": "Desc"},
+            {"key": "cover", "type": "file", "src": ""}
+          ]
+        },
+        "url": "{{baseUrl}}/v1/posts"
+      }
+    },
+    {
+      "name": "Show Post",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/v1/posts/1"
+      }
+    },
+    {
+      "name": "Update Post",
+      "request": {
+        "method": "POST",
+        "header": [
+          {"key": "Accept", "value": "application/json"},
+          {"key": "X-HTTP-Method-Override", "value": "PUT"}
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {"key": "title", "value": "Updated"}
+          ]
+        },
+        "url": "{{baseUrl}}/v1/posts/1"
+      }
+    },
+    {
+      "name": "Delete Post",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {"key": "Accept", "value": "application/json"}
+        ],
+        "url": "{{baseUrl}}/v1/posts/1"
+      }
+    }
+  ]
+}
